@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { ChevronRight, Code, Command, Github, Laptop, Lightbulb, Rocket, Terminal, Twitter, Instagram, Linkedin, Youtube, MessageSquare, Zap, Users, Book, FileText, HelpCircle, Bookmark, Settings, Server, ChevronDown, AlertCircle, X, ExternalLink, Save, GitBranch, GitPullRequest, GitMerge, GitCommit } from 'lucide-react'
+import React from 'react'
+import { ChevronRight, Code, Command, Github, Laptop, Lightbulb, Rocket, Terminal, Twitter, Instagram, Linkedin, Youtube, MessageSquare, Zap, Users, Book, FileText, HelpCircle, Bookmark, Settings, Server, ChevronDown, AlertCircle, X, ExternalLink, Clock } from 'lucide-react'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import GuideCard from './components/GuideCard'
@@ -7,8 +7,7 @@ import { guides } from './data/guides'
 import { useNavigate } from 'react-router-dom'
 
 function App() {
-  const [showTroubleshootingPopup, setShowTroubleshootingPopup] = useState(false);
-  const [showSaveReminderPopup, setShowSaveReminderPopup] = useState(false);
+  const [showTroubleshootingPopup, setShowTroubleshootingPopup] = React.useState(false);
   const navigate = useNavigate();
 
   const handleTroubleshootingClick = (e: React.MouseEvent) => {
@@ -21,9 +20,9 @@ function App() {
     navigate('/github-integration');
   };
 
-  const handleSaveReminderClick = (e: React.MouseEvent) => {
+  const handleGettingStartedClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    setShowSaveReminderPopup(true);
+    navigate('/getting-started');
   };
 
   return (
@@ -31,21 +30,35 @@ function App() {
       <Header />
       
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-16 px-4">
+      <section className="gradient-bg text-white py-20 px-4">
         <div className="max-w-5xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Build apps through conversation</h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">Build apps through conversation</h1>
+          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto font-light">
             ChatAndBuild is a revolutionary platform that lets you create applications simply by having a conversation. No coding required - just describe what you want, and watch it come to life.
           </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <a 
+              href="#" 
+              className="px-8 py-3 bg-white text-primary-600 hover:bg-gray-100 rounded-md font-medium transition-all duration-200 flex items-center justify-center shadow-md hover:shadow-lg"
+            >
+              <Command className="mr-2 h-5 w-5" /> Get Started
+            </a>
+            <a 
+              href="#" 
+              className="px-8 py-3 bg-primary-700 hover:bg-primary-800 text-white rounded-md font-medium transition-all duration-200 flex items-center justify-center shadow-md hover:shadow-lg"
+            >
+              <Play className="mr-2 h-5 w-5" /> Watch Demo
+            </a>
+          </div>
         </div>
       </section>
       
       {/* What is ChatAndBuild Section */}
-      <section className="py-16 px-4 bg-white">
+      <section className="py-20 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">What is ChatAndBuild?</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="section-title">What is ChatAndBuild?</h2>
+            <p className="section-description">
               ChatAndBuild is a revolutionary platform that combines AI-powered chat with real-time development capabilities.
             </p>
           </div>
@@ -70,32 +83,12 @@ function App() {
         </div>
       </section>
       
-      {/* Save Your Progress Banner */}
-      <div className="bg-amber-50 border-y border-amber-200">
-        <div className="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between">
-          <div className="flex items-center mb-4 md:mb-0">
-            <div className="bg-amber-100 p-2 rounded-full mr-3">
-              <Save className="h-6 w-6 text-amber-600" />
-            </div>
-            <p className="font-medium text-amber-800">
-              Remember to save your progress regularly to prevent losing your work!
-            </p>
-          </div>
-          <button 
-            onClick={handleSaveReminderClick}
-            className="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-md text-sm font-medium transition-colors duration-200"
-          >
-            Why It's Important
-          </button>
-        </div>
-      </div>
-      
       {/* Documentation Section */}
-      <section className="py-16 px-4 bg-gray-50">
+      <section className="py-20 px-4 bg-gray-50">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Documentation</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="section-title">Documentation</h2>
+            <p className="section-description">
               Explore our comprehensive documentation to get the most out of ChatAndBuild.
             </p>
           </div>
@@ -106,13 +99,9 @@ function App() {
               title="Getting Started"
               description="Learn the basics and set up your first project"
               url="#"
+              onClick={handleGettingStartedClick}
             />
-            <DocCard 
-              icon={<FileText className="h-8 w-8" />}
-              title="API Reference"
-              description="Detailed documentation of all APIs and endpoints"
-              url="#"
-            />
+            {/* API Reference card removed */}
             <DocCard 
               icon={<HelpCircle className="h-8 w-8" />}
               title="Tutorials"
@@ -144,7 +133,7 @@ function App() {
           <div className="mt-10 text-center">
             <a 
               href="#" 
-              className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
+              className="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium"
             >
               View all documentation <ChevronRight className="h-4 w-4 ml-1" />
             </a>
@@ -152,12 +141,78 @@ function App() {
         </div>
       </section>
       
+      {/* Tutorials Section (Replacing Popular Guides) */}
+      <section className="py-20 px-4 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="section-title">Tutorials</h2>
+            <p className="section-description">
+              Learn how to build amazing applications with our step-by-step tutorials.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <TutorialCard 
+              icon={<Code className="h-8 w-8" />}
+              title="Building a Todo App"
+              description="Learn how to build a simple todo application with React and ChatAndBuild."
+              difficulty="Beginner"
+              duration="30 min"
+            />
+            <TutorialCard 
+              icon={<Laptop className="h-8 w-8" />}
+              title="Creating a Portfolio Website"
+              description="Build a professional portfolio website to showcase your projects and skills."
+              difficulty="Intermediate"
+              duration="45 min"
+            />
+            <TutorialCard 
+              icon={<Rocket className="h-8 w-8" />}
+              title="Developing a Full-Stack App"
+              description="Create a complete application with frontend, backend, and database integration."
+              difficulty="Advanced"
+              duration="90 min"
+            />
+            <TutorialCard 
+              icon={<Terminal className="h-8 w-8" />}
+              title="Command Line Tools"
+              description="Build powerful CLI tools to automate your development workflow."
+              difficulty="Intermediate"
+              duration="60 min"
+            />
+            <TutorialCard 
+              icon={<Lightbulb className="h-8 w-8" />}
+              title="AI-Powered Features"
+              description="Integrate AI capabilities into your applications for smarter user experiences."
+              difficulty="Advanced"
+              duration="75 min"
+            />
+            <TutorialCard 
+              icon={<Github className="h-8 w-8" />}
+              title="GitHub Integration"
+              description="Learn how to connect your ChatAndBuild projects with GitHub repositories."
+              difficulty="Beginner"
+              duration="20 min"
+            />
+          </div>
+          
+          <div className="mt-10 text-center">
+            <a 
+              href="#" 
+              className="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium"
+            >
+              View all tutorials <ChevronRight className="h-4 w-4 ml-1" />
+            </a>
+          </div>
+        </div>
+      </section>
+      
       {/* FAQ Section */}
-      <section className="py-16 px-4 bg-white">
+      <section className="py-20 px-4 bg-gray-50">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="section-title">Frequently Asked Questions</h2>
+            <p className="section-description">
               Find answers to common questions about ChatAndBuild.
             </p>
           </div>
@@ -298,7 +353,7 @@ function App() {
             <p className="text-gray-600 mb-4">Still have questions?</p>
             <a 
               href="#" 
-              className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-200"
+              className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-primary-600 to-blue-500 hover:from-primary-700 hover:to-blue-600 text-white rounded-md transition-all duration-200 font-medium shadow-md hover:shadow-lg"
             >
               Contact Support
             </a>
@@ -307,9 +362,9 @@ function App() {
       </section>
       
       {/* Socials Section */}
-      <section className="py-16 px-4 bg-gray-100">
+      <section className="py-20 px-4 bg-gray-100">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4 text-gray-900">Connect With Us</h2>
+          <h2 className="section-title">Connect With Us</h2>
           <p className="text-lg mb-8 text-gray-700 max-w-2xl mx-auto">
             Follow us on social media for the latest updates, tips, and community highlights.
           </p>
@@ -349,7 +404,7 @@ function App() {
       </section>
       
       {/* CTA Section */}
-      <section className="py-16 px-4 bg-gray-900 text-white">
+      <section className="py-20 px-4 bg-gray-900 text-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-6">Ready to build your next project?</h2>
           <p className="text-xl mb-8">
@@ -358,13 +413,13 @@ function App() {
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <a 
               href="#" 
-              className="px-8 py-3 bg-blue-600 hover:bg-blue-700 rounded-md font-medium transition-colors duration-200 flex items-center justify-center"
+              className="px-8 py-3 bg-gradient-to-r from-primary-600 to-blue-500 hover:from-primary-700 hover:to-blue-600 text-white rounded-md transition-all duration-200 font-medium flex items-center justify-center shadow-md hover:shadow-lg"
             >
               <Command className="mr-2 h-5 w-5" /> Get Started
             </a>
             <a 
               href="#" 
-              className="px-8 py-3 bg-gray-700 hover:bg-gray-800 rounded-md font-medium transition-colors duration-200 flex items-center justify-center"
+              className="px-8 py-3 bg-gray-700 hover:bg-gray-800 rounded-md transition-all duration-200 font-medium flex items-center justify-center shadow-md hover:shadow-lg"
             >
               <Github className="mr-2 h-5 w-5" /> View on GitHub
             </a>
@@ -374,11 +429,11 @@ function App() {
       
       {/* Troubleshooting Popup */}
       {showTroubleshootingPopup && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg shadow-xl max-w-md w-full p-6 relative">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 animate-fadeIn">
+          <div className="bg-white rounded-lg shadow-xl max-w-md w-full p-6 relative animate-slideUp">
             <button 
               onClick={() => setShowTroubleshootingPopup(false)}
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors duration-200"
             >
               <X className="h-5 w-5" />
             </button>
@@ -399,67 +454,12 @@ function App() {
                 <p className="text-gray-600 mb-4">Or visit our support center for more help</p>
                 <a 
                   href="#" 
-                  className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
+                  className="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium transition-colors duration-200"
                   onClick={() => setShowTroubleshootingPopup(false)}
                 >
                   Go to Support Center <ExternalLink className="h-4 w-4 ml-1" />
                 </a>
               </div>
-            </div>
-          </div>
-        </div>
-      )}
-      
-      {/* Save Reminder Popup */}
-      {showSaveReminderPopup && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg shadow-xl max-w-lg w-full p-6 relative">
-            <button 
-              onClick={() => setShowSaveReminderPopup(false)}
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
-            >
-              <X className="h-5 w-5" />
-            </button>
-            
-            <div className="text-center mb-6">
-              <div className="inline-flex items-center justify-center h-12 w-12 rounded-full bg-amber-100 text-amber-600 mb-4">
-                <Save className="h-6 w-6" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900">Why Saving Your Progress Is Critical</h3>
-            </div>
-            
-            <div className="space-y-4">
-              <div className="bg-amber-50 p-4 rounded-md border border-amber-100 mb-4">
-                <h4 className="font-semibold text-amber-800 mb-2">⚠️ Unsaved Work Is at Risk</h4>
-                <p className="text-amber-700">
-                  Browser crashes, network issues, or accidental tab closures can cause you to lose hours of work in an instant. Always save your progress to prevent frustration and lost time.
-                </p>
-              </div>
-              
-              <h4 className="text-lg font-semibold text-gray-800">How ChatAndBuild Helps You Save:</h4>
-              <ul className="list-disc pl-5 space-y-2 text-gray-600">
-                <li><span className="font-medium">Auto-save:</span> Changes are automatically saved every few minutes</li>
-                <li><span className="font-medium">Manual save:</span> Use Ctrl+S (or Cmd+S on Mac) to save at any time</li>
-                <li><span className="font-medium">GitHub integration:</span> Commit your changes to GitHub for extra protection</li>
-                <li><span className="font-medium">Export options:</span> Download your project as a ZIP file for local backup</li>
-                <li><span className="font-medium">Version history:</span> Access previous versions of your project if needed</li>
-              </ul>
-              
-              <div className="bg-green-50 p-4 rounded-md border border-green-100 mt-4">
-                <h4 className="font-semibold text-green-800 mb-2">💡 Pro Tip</h4>
-                <p className="text-green-700">
-                  Get in the habit of saving your work every 15-20 minutes, or whenever you complete a significant feature or fix. This simple practice can save you hours of rework.
-                </p>
-              </div>
-            </div>
-            
-            <div className="mt-6 pt-4 border-t border-gray-200 flex justify-end">
-              <button 
-                onClick={() => setShowSaveReminderPopup(false)}
-                className="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-md font-medium transition-colors duration-200"
-              >
-                I'll Remember to Save
-              </button>
             </div>
           </div>
         </div>
@@ -478,10 +478,10 @@ interface FeatureCardProps {
 
 function FeatureCard({ icon, title, description }: FeatureCardProps) {
   return (
-    <div className="bg-white rounded-lg shadow-md p-8 hover:shadow-lg transition-shadow duration-200 border border-gray-100 flex flex-col items-center text-center">
-      <div className="text-blue-600 mb-4">{icon}</div>
-      <h3 className="text-xl font-semibold mb-3">{title}</h3>
-      <p className="text-gray-600">{description}</p>
+    <div className="bg-white rounded-lg shadow-sm p-8 hover:shadow-md transition-all duration-300 border border-gray-100 flex flex-col items-center text-center feature-card">
+      <div className="text-primary-600 mb-4">{icon}</div>
+      <h3 className="text-xl font-semibold mb-3 text-secondary-900">{title}</h3>
+      <p className="text-secondary-600">{description}</p>
     </div>
   )
 }
@@ -498,19 +498,72 @@ function DocCard({ icon, title, description, url, onClick }: DocCardProps) {
   return (
     <a 
       href={url}
-      className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-200 border border-gray-100 flex flex-col h-full"
+      className="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-all duration-300 border border-gray-100 flex flex-col h-full group card-hover"
       onClick={onClick}
     >
-      <div className="text-blue-600 mb-4">{icon}</div>
-      <h3 className="text-xl font-semibold mb-2">{title}</h3>
-      <p className="text-gray-600 mb-4">{description}</p>
+      <div className="text-primary-600 mb-4">{icon}</div>
+      <h3 className="text-xl font-semibold mb-2 text-secondary-900 group-hover:text-primary-600 transition-colors duration-200">{title}</h3>
+      <p className="text-secondary-600 mb-4">{description}</p>
       <div className="mt-auto">
-        <span className="text-blue-600 hover:text-blue-800 flex items-center text-sm font-medium">
-          Learn more <ChevronRight className="h-4 w-4 ml-1" />
+        <span className="text-primary-600 group-hover:text-primary-700 flex items-center text-sm font-medium">
+          Learn more <ChevronRight className="h-4 w-4 ml-1 transition-transform duration-200 group-hover:translate-x-0.5" />
         </span>
       </div>
     </a>
   )
+}
+
+// New TutorialCard component
+interface TutorialCardProps {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+  difficulty: 'Beginner' | 'Intermediate' | 'Advanced';
+  duration: string;
+}
+
+function TutorialCard({ icon, title, description, difficulty, duration }: TutorialCardProps) {
+  // Define difficulty badge color
+  const difficultyColor = {
+    'Beginner': 'bg-green-50 text-green-700',
+    'Intermediate': 'bg-blue-50 text-blue-700',
+    'Advanced': 'bg-purple-50 text-purple-700'
+  }[difficulty];
+  
+  return (
+    <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 overflow-hidden group">
+      <div className="p-6">
+        <div className="flex justify-between items-start mb-4">
+          <div className="text-primary-600 p-3 bg-primary-50 rounded-lg">{icon}</div>
+          <span className={`inline-block px-3 py-1 text-xs font-medium rounded-full ${difficultyColor}`}>
+            {difficulty}
+          </span>
+        </div>
+        
+        <h3 className="text-xl font-bold text-secondary-900 mb-2 group-hover:text-primary-600 transition-colors duration-200">
+          {title}
+        </h3>
+        
+        <p className="text-secondary-600 mb-4">
+          {description}
+        </p>
+        
+        <div className="flex justify-between items-center pt-4 border-t border-gray-100">
+          <div className="flex items-center text-secondary-500 text-sm">
+            <Clock className="h-4 w-4 mr-1" />
+            <span>{duration}</span>
+          </div>
+          
+          <a 
+            href="#" 
+            className="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium text-sm transition-all duration-200"
+          >
+            Start Tutorial <ChevronRight className="h-4 w-4 ml-1 transition-transform duration-200 group-hover:translate-x-0.5" />
+          </a>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 interface FaqItemProps {
@@ -522,19 +575,19 @@ function FaqItem({ question, answer }: FaqItemProps) {
   const [isOpen, setIsOpen] = React.useState(false);
   
   return (
-    <div className="border border-gray-200 rounded-lg overflow-hidden">
+    <div className="border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all duration-200">
       <button
         className="w-full flex justify-between items-center p-5 bg-white hover:bg-gray-50 transition-colors duration-200 text-left"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <h3 className="text-lg font-medium text-gray-900">{question}</h3>
+        <h3 className="text-lg font-medium text-secondary-900">{question}</h3>
         <ChevronDown 
-          className={`h-5 w-5 text-gray-500 transition-transform duration-200 ${isOpen ? 'transform rotate-180' : ''}`} 
+          className={`h-5 w-5 text-secondary-500 transition-transform duration-200 ${isOpen ? 'transform rotate-180' : ''}`} 
         />
       </button>
       {isOpen && (
-        <div className="p-5 bg-gray-50 border-t border-gray-200">
-          <p className="text-gray-600">{answer}</p>
+        <div className="p-5 bg-gray-50 border-t border-gray-200 animate-fadeIn">
+          <p className="text-secondary-600">{answer}</p>
         </div>
       )}
     </div>
@@ -551,16 +604,31 @@ interface SocialCardProps {
 function SocialCard({ icon, name, handle, color }: SocialCardProps) {
   return (
     <a 
-      href="#" 
-      className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 border border-gray-100"
+      href="#" className="flex flex-col items-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 card-hover"
     >
       <div className={`${color} text-white p-4 rounded-full mb-4`}>
         {icon}
       </div>
-      <h3 className="text-lg font-semibold text-gray-900">{name}</h3>
-      <p className="text-gray-600">{handle}</p>
+      <h3 className="text-lg font-semibold text-secondary-900">{name}</h3>
+      <p className="text-secondary-600">{handle}</p>
     </a>
   )
 }
+
+// Add missing Play icon component
+const Play = ({ className = "h-6 w-6" }: { className?: string }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round" 
+    className={className}
+  >
+    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+  </svg>
+);
 
 export default App
