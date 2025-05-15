@@ -25,6 +25,11 @@ function App() {
     navigate('/getting-started');
   };
 
+  const handleApiReferenceClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    navigate('/api-reference');
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
       <Header />
@@ -101,7 +106,13 @@ function App() {
               url="#"
               onClick={handleGettingStartedClick}
             />
-            {/* API Reference card removed */}
+            <DocCard 
+              icon={<FileText className="h-8 w-8" />}
+              title="API Reference"
+              description="Comprehensive guide to the ChatAndBuild API"
+              url="#"
+              onClick={handleApiReferenceClick}
+            />
             <DocCard 
               icon={<HelpCircle className="h-8 w-8" />}
               title="Tutorials"

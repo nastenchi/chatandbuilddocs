@@ -1,167 +1,260 @@
-import React from 'react'
-import { Github, ChevronLeft, GitBranch, GitPullRequest, GitMerge, GitCommit } from 'lucide-react'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
-import { useNavigate } from 'react-router-dom'
+import React from 'react';
+import { ArrowLeft, Github, GitBranch, GitCommit, GitMerge, GitPullRequest } from 'lucide-react';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import { Link } from 'react-router-dom';
 
 const GitHubIntegration = () => {
-  const navigate = useNavigate();
-
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
       <Header />
       
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-gray-800 to-gray-900 text-white py-16 px-4">
-        <div className="max-w-5xl mx-auto">
-          <button 
-            onClick={() => navigate('/')}
-            className="mb-8 inline-flex items-center text-gray-300 hover:text-white transition-colors duration-200"
-          >
-            <ChevronLeft className="h-5 w-5 mr-1" /> Back to Home
-          </button>
-          <div className="flex items-center mb-6">
-            <div className="bg-white p-3 rounded-lg mr-5">
-              <Github className="h-10 w-10 text-gray-900" />
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold">GitHub Integration</h1>
-          </div>
-          <p className="text-xl md:text-2xl max-w-3xl">
-            Seamlessly connect your ChatAndBuild projects with GitHub for version control, collaboration, and deployment.
+      <div className="flex-grow container mx-auto px-4 py-12 max-w-7xl">
+        {/* Breadcrumb */}
+        <div className="mb-8">
+          <Link to="/" className="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium transition-colors duration-200">
+            <ArrowLeft className="h-4 w-4 mr-2" /> Back to Home
+          </Link>
+        </div>
+        
+        {/* Title */}
+        <div className="mb-12 text-center">
+          <h1 className="text-4xl font-bold text-secondary-900 mb-4">GitHub Integration</h1>
+          <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
+            Connect your ChatAndBuild projects with GitHub repositories
           </p>
         </div>
-      </section>
-      
-      {/* Main Content */}
-      <section className="py-16 px-4">
+        
+        {/* Content */}
         <div className="max-w-4xl mx-auto">
-          <div className="bg-white rounded-lg shadow-md p-8 mb-10">
-            <h2 className="text-2xl font-bold mb-6 text-gray-900">Why GitHub Integration Matters</h2>
-            <p className="text-gray-700 mb-6">
-              GitHub integration is more than just a convenience—it's essential for professional development and protecting your work. By connecting ChatAndBuild with GitHub, you gain access to powerful tools for version control, collaboration, and deployment.
+          {/* Introduction */}
+          <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-8 mb-8">
+            <div className="flex items-center mb-6">
+              <Github className="h-8 w-8 text-primary-600 mr-3" />
+              <h2 className="text-2xl font-bold text-secondary-900">Why Connect to GitHub?</h2>
+            </div>
+            
+            <p className="text-secondary-600 mb-6">
+              Integrating your ChatAndBuild projects with GitHub provides several benefits:
             </p>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-              <div>
-                <div className="flex items-start mb-4">
-                  <div className="bg-gray-100 p-2 rounded-lg mr-3">
-                    <GitBranch className="h-6 w-6 text-gray-700" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-900">Version Control</h3>
-                </div>
-                <p className="text-gray-700">
-                  Track changes, create branches, and manage your project's history. Every change is automatically committed, making it easy to revert to previous versions if needed.
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                <h3 className="text-lg font-semibold mb-3 text-secondary-900">Version Control</h3>
+                <p className="text-secondary-600">
+                  Track changes to your code over time and easily revert to previous versions if needed.
                 </p>
               </div>
               
-              <div>
-                <div className="flex items-start mb-4">
-                  <div className="bg-gray-100 p-2 rounded-lg mr-3">
-                    <GitPullRequest className="h-6 w-6 text-gray-700" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-900">Pull Requests</h3>
-                </div>
-                <p className="text-gray-700">
-                  Create pull requests directly from ChatAndBuild to propose changes, review code, and discuss implementations with your team before merging.
+              <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                <h3 className="text-lg font-semibold mb-3 text-secondary-900">Collaboration</h3>
+                <p className="text-secondary-600">
+                  Work with team members using familiar GitHub workflows like pull requests and code reviews.
                 </p>
               </div>
               
-              <div>
-                <div className="flex items-start mb-4">
-                  <div className="bg-gray-100 p-2 rounded-lg mr-3">
-                    <GitCommit className="h-6 w-6 text-gray-700" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-900">Commit History</h3>
-                </div>
-                <p className="text-gray-700">
-                  View a detailed history of all changes made to your project, including who made them and when. This makes it easy to track progress and understand how your project has evolved.
+              <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                <h3 className="text-lg font-semibold mb-3 text-secondary-900">CI/CD Integration</h3>
+                <p className="text-secondary-600">
+                  Connect your project to GitHub Actions or other CI/CD tools for automated testing and deployment.
                 </p>
               </div>
               
-              <div>
-                <div className="flex items-start mb-4">
-                  <div className="bg-gray-100 p-2 rounded-lg mr-3">
-                    <GitMerge className="h-6 w-6 text-gray-700" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-900">Seamless Integration</h3>
-                </div>
-                <p className="text-gray-700">
-                  Connect existing GitHub repositories or create new ones directly from ChatAndBuild. Push and pull changes with a single click.
+              <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                <h3 className="text-lg font-semibold mb-3 text-secondary-900">Code Backup</h3>
+                <p className="text-secondary-600">
+                  Keep your code safe and accessible, even outside of the ChatAndBuild platform.
                 </p>
               </div>
             </div>
           </div>
           
-          {/* How to Connect */}
-          <div className="bg-white rounded-lg shadow-md p-8 mb-10">
-            <h2 className="text-2xl font-bold mb-6 text-gray-900">How to Connect Your GitHub Account</h2>
+          {/* Setup Instructions */}
+          <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-8 mb-8">
+            <h2 className="text-2xl font-bold text-secondary-900 mb-6">Setting Up GitHub Integration</h2>
             
-            <div className="mb-8">
-              <p className="text-gray-700 mb-6">
-                Connecting your GitHub account to ChatAndBuild is a straightforward process that takes just a few minutes. Once connected, you'll be able to sync your projects, manage repositories, and leverage GitHub's powerful features directly from the ChatAndBuild interface.
-              </p>
+            <div className="space-y-8">
+              <div>
+                <div className="flex items-center mb-4">
+                  <div className="bg-primary-100 text-primary-700 rounded-full h-8 w-8 flex items-center justify-center font-bold mr-3">1</div>
+                  <h3 className="text-xl font-semibold text-secondary-900">Connect Your GitHub Account</h3>
+                </div>
+                <div className="ml-11">
+                  <p className="text-secondary-600 mb-4">
+                    First, you'll need to connect your GitHub account to ChatAndBuild:
+                  </p>
+                  <ol className="list-decimal list-inside space-y-2 text-secondary-600 mb-4">
+                    <li>Go to your account settings</li>
+                    <li>Click on "Integrations"</li>
+                    <li>Find GitHub in the list of available integrations</li>
+                    <li>Click "Connect" and follow the authorization process</li>
+                  </ol>
+                  <div className="bg-gray-50 p-4 rounded-md border border-gray-200">
+                    <p className="text-sm text-secondary-700">
+                      <strong>Note:</strong> You'll be asked to authorize ChatAndBuild to access your GitHub repositories. You can choose to grant access to all repositories or only specific ones.
+                    </p>
+                  </div>
+                </div>
+              </div>
               
-              <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
-                <h3 className="text-xl font-semibold mb-4 text-gray-900">Step-by-Step Instructions</h3>
-                <ol className="list-decimal pl-5 space-y-4 text-gray-700">
-                  <li>
-                    <strong>Go to your ChatAndBuild account settings</strong>
-                    <p className="mt-1">Click on your profile picture in the top-right corner and select "Settings" from the dropdown menu.</p>
-                  </li>
-                  <li>
-                    <strong>Navigate to the Integrations section</strong>
-                    <p className="mt-1">In the left sidebar, click on "Integrations" to view all available third-party services.</p>
-                  </li>
-                  <li>
-                    <strong>Find GitHub in the list of available integrations</strong>
-                    <p className="mt-1">Locate the GitHub card among the integration options and click on it.</p>
-                  </li>
-                  <li>
-                    <strong>Authorize ChatAndBuild</strong>
-                    <p className="mt-1">Click "Connect" and you'll be redirected to GitHub. Review the permissions and click "Authorize ChatAndBuild" to proceed.</p>
-                  </li>
-                  <li>
-                    <strong>Choose repositories to sync</strong>
-                    <p className="mt-1">Select which repositories you want to sync with ChatAndBuild, or create a new repository directly from the interface.</p>
-                  </li>
-                  <li>
-                    <strong>Start using GitHub features</strong>
-                    <p className="mt-1">Once connected, you'll see GitHub options appear in your project dashboard, allowing you to commit changes, create branches, and more.</p>
-                  </li>
-                </ol>
+              <div>
+                <div className="flex items-center mb-4">
+                  <div className="bg-primary-100 text-primary-700 rounded-full h-8 w-8 flex items-center justify-center font-bold mr-3">2</div>
+                  <h3 className="text-xl font-semibold text-secondary-900">Link a Repository to Your Project</h3>
+                </div>
+                <div className="ml-11">
+                  <p className="text-secondary-600 mb-4">
+                    Once your GitHub account is connected, you can link a repository to your ChatAndBuild project:
+                  </p>
+                  <ol className="list-decimal list-inside space-y-2 text-secondary-600 mb-4">
+                    <li>Open your project in ChatAndBuild</li>
+                    <li>Go to the project settings</li>
+                    <li>Click on "GitHub Integration"</li>
+                    <li>Choose to either link an existing repository or create a new one</li>
+                    <li>Follow the prompts to complete the linking process</li>
+                  </ol>
+                </div>
+              </div>
+              
+              <div>
+                <div className="flex items-center mb-4">
+                  <div className="bg-primary-100 text-primary-700 rounded-full h-8 w-8 flex items-center justify-center font-bold mr-3">3</div>
+                  <h3 className="text-xl font-semibold text-secondary-900">Configure Sync Settings</h3>
+                </div>
+                <div className="ml-11">
+                  <p className="text-secondary-600 mb-4">
+                    Configure how changes are synchronized between ChatAndBuild and GitHub:
+                  </p>
+                  <ul className="list-disc list-inside space-y-2 text-secondary-600 mb-4">
+                    <li>Choose whether to automatically commit changes made in ChatAndBuild</li>
+                    <li>Set up branch preferences for development work</li>
+                    <li>Configure commit message templates</li>
+                    <li>Set up pull request automation (optional)</li>
+                  </ul>
+                  <div className="bg-gray-50 p-4 rounded-md border border-gray-200">
+                    <p className="text-sm text-secondary-700">
+                      <strong>Tip:</strong> For team projects, we recommend setting up a development branch and using pull requests to merge changes into the main branch.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Workflow */}
+          <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-8 mb-8">
+            <h2 className="text-2xl font-bold text-secondary-900 mb-6">Working with GitHub and ChatAndBuild</h2>
+            
+            <div className="space-y-8">
+              <div>
+                <div className="flex items-center mb-4">
+                  <GitBranch className="h-6 w-6 text-primary-600 mr-3" />
+                  <h3 className="text-xl font-semibold text-secondary-900">Branching</h3>
+                </div>
+                <p className="text-secondary-600 mb-4">
+                  Create and switch between branches directly from the ChatAndBuild interface:
+                </p>
+                <ul className="list-disc list-inside space-y-2 text-secondary-600">
+                  <li>Use the branch selector in the project toolbar</li>
+                  <li>Create new branches for features or bug fixes</li>
+                  <li>Switch between branches to work on different aspects of your project</li>
+                </ul>
+              </div>
+              
+              <div>
+                <div className="flex items-center mb-4">
+                  <GitCommit className="h-6 w-6 text-primary-600 mr-3" />
+                  <h3 className="text-xl font-semibold text-secondary-900">Committing Changes</h3>
+                </div>
+                <p className="text-secondary-600 mb-4">
+                  Commit your changes to GitHub:
+                </p>
+                <ul className="list-disc list-inside space-y-2 text-secondary-600">
+                  <li>Use the commit button in the project toolbar</li>
+                  <li>Write descriptive commit messages to document your changes</li>
+                  <li>Choose which files to include in your commit</li>
+                </ul>
+              </div>
+              
+              <div>
+                <div className="flex items-center mb-4">
+                  <GitPullRequest className="h-6 w-6 text-primary-600 mr-3" />
+                  <h3 className="text-xl font-semibold text-secondary-900">Pull Requests</h3>
+                </div>
+                <p className="text-secondary-600 mb-4">
+                  Create and manage pull requests:
+                </p>
+                <ul className="list-disc list-inside space-y-2 text-secondary-600">
+                  <li>Create pull requests from the ChatAndBuild interface</li>
+                  <li>Review code changes and leave comments</li>
+                  <li>Merge approved pull requests</li>
+                </ul>
+              </div>
+              
+              <div>
+                <div className="flex items-center mb-4">
+                  <GitMerge className="h-6 w-6 text-primary-600 mr-3" />
+                  <h3 className="text-xl font-semibold text-secondary-900">Resolving Conflicts</h3>
+                </div>
+                <p className="text-secondary-600 mb-4">
+                  Handle merge conflicts:
+                </p>
+                <ul className="list-disc list-inside space-y-2 text-secondary-600">
+                  <li>ChatAndBuild will notify you of conflicts when pulling changes</li>
+                  <li>Use the built-in conflict resolution tool to resolve conflicts</li>
+                  <li>Choose which changes to keep from each version</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          {/* Best Practices */}
+          <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-8">
+            <h2 className="text-2xl font-bold text-secondary-900 mb-6">Best Practices</h2>
+            
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-lg font-semibold mb-3 text-secondary-900">Commit Frequently</h3>
+                <p className="text-secondary-600">
+                  Make small, focused commits that address a single issue or feature. This makes it easier to track changes and revert if necessary.
+                </p>
+              </div>
+              
+              <div>
+                <h3 className="text-lg font-semibold mb-3 text-secondary-900">Use Descriptive Commit Messages</h3>
+                <p className="text-secondary-600">
+                  Write clear, concise commit messages that explain what changes were made and why. This helps team members understand the purpose of each commit.
+                </p>
+              </div>
+              
+              <div>
+                <h3 className="text-lg font-semibold mb-3 text-secondary-900">Branch for Features</h3>
+                <p className="text-secondary-600">
+                  Create a new branch for each feature or bug fix. This keeps your main branch clean and makes it easier to manage parallel development efforts.
+                </p>
+              </div>
+              
+              <div>
+                <h3 className="text-lg font-semibold mb-3 text-secondary-900">Pull Before Push</h3>
+                <p className="text-secondary-600">
+                  Always pull the latest changes from the remote repository before pushing your own changes. This reduces the likelihood of conflicts.
+                </p>
+              </div>
+              
+              <div>
+                <h3 className="text-lg font-semibold mb-3 text-secondary-900">Use Pull Requests for Code Review</h3>
+                <p className="text-secondary-600">
+                  Even for small teams, using pull requests provides an opportunity for code review and discussion before changes are merged.
+                </p>
               </div>
             </div>
           </div>
         </div>
-      </section>
-      
-      {/* CTA Section */}
-      <section className="py-16 px-4 bg-gray-100">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-6 text-gray-900">Ready to Connect GitHub?</h2>
-          <p className="text-xl mb-8 text-gray-700 max-w-2xl mx-auto">
-            Start protecting your work and collaborating more effectively by connecting your GitHub account today.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <a 
-              href="#" 
-              className="px-8 py-3 bg-gray-800 hover:bg-gray-900 text-white rounded-md font-medium transition-colors duration-200 flex items-center justify-center"
-            >
-              <Github className="mr-2 h-5 w-5" /> Connect GitHub
-            </a>
-            <a 
-              href="#" 
-              className="px-8 py-3 bg-white border border-gray-300 hover:bg-gray-50 text-gray-800 rounded-md font-medium transition-colors duration-200 flex items-center justify-center"
-            >
-              Learn More About GitHub
-            </a>
-          </div>
-        </div>
-      </section>
+      </div>
       
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default GitHubIntegration
+export default GitHubIntegration;

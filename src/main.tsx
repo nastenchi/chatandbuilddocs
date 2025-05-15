@@ -1,19 +1,21 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import App from './App.tsx'
-import './index.css'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import ApiReference from './pages/ApiReference.tsx'
 import GettingStarted from './pages/GettingStarted.tsx'
-// Remove history import and usage since it's not needed with React Router v6+
+import GitHubIntegration from './pages/GitHubIntegration.tsx'
+import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <Router>
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
+        <Route path="/api-reference" element={<ApiReference />} />
         <Route path="/getting-started" element={<GettingStarted />} />
-        <Route path="/github-integration" element={<div>GitHub Integration Page</div>} />
+        <Route path="/github-integration" element={<GitHubIntegration />} />
       </Routes>
-    </Router>
+    </BrowserRouter>
   </React.StrictMode>,
 )

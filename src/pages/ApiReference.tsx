@@ -522,7 +522,7 @@ Authorization: Bearer YOUR_API_KEY`}</code>
                   <h3 className="text-xl font-semibold mb-4 text-secondary-900">Get Project</h3>
                   <div className="bg-gray-50 p-4 rounded-md border border-gray-200 mb-4">
                     <div className="flex items-center mb-2">
-                <pivotalAction type="file" filePath="src/pages/ApiReference.tsx">                      <span className="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full mr-2">GET</span>
+                      <span className="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full mr-2">GET</span>
                       <code className="text-sm text-secondary-800 font-mono">/projects/:id</code>
                     </div>
                     <p className="text-sm text-secondary-600 mb-2">
