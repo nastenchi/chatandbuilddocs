@@ -30,7 +30,7 @@ const Tutorials = () => {
 
         {/* Featured Tutorial */}
         <div className="mb-16">
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+          <div className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8">
               <div>
                 <div className="inline-flex items-center px-3 py-1 bg-gradient-to-r from-primary-50 to-blue-50 text-primary-700 text-sm font-medium rounded-full mb-4">
@@ -38,44 +38,43 @@ const Tutorials = () => {
                   Featured Tutorial
                 </div>
                 <h2 className="text-3xl font-bold text-secondary-900 mb-4">
-                  Complete ChatAndBuild Masterclass
+                  Complete ChatAndBuild Tutorial
                 </h2>
                 <p className="text-secondary-600 mb-6 text-lg">
-                  A comprehensive 90-minute tutorial covering everything from basic setup to deploying production applications. Perfect for beginners and experienced developers alike.
+                  A comprehensive guide covering all features and capabilities of ChatAndBuild. Perfect for getting started and understanding the full potential of conversational development.
                 </p>
                 <div className="flex items-center gap-6 text-sm text-secondary-500 mb-6">
                   <div className="flex items-center">
                     <Clock className="h-4 w-4 mr-1" />
-                    <span>90 minutes</span>
+                    <span>3:23 minutes</span>
                   </div>
                   <div className="flex items-center">
                     <Users className="h-4 w-4 mr-1" />
                     <span>All levels</span>
                   </div>
-                  <div className="flex items-center">
-                    <BookOpen className="h-4 w-4 mr-1" />
-                    <span>12 chapters</span>
-                  </div>
                 </div>
                 <div className="space-y-2 text-sm text-secondary-600">
                   <div className="flex items-center">
                     <div className="w-2 h-2 bg-primary-500 rounded-full mr-3"></div>
-                    <span>Setting up your first project</span>
+                    <span>Complete overview of ChatAndBuild features</span>
                   </div>
                   <div className="flex items-center">
                     <div className="w-2 h-2 bg-primary-500 rounded-full mr-3"></div>
-                    <span>Advanced conversation techniques</span>
+                    <span>Essential tips for effective development</span>
                   </div>
                   <div className="flex items-center">
                     <div className="w-2 h-2 bg-primary-500 rounded-full mr-3"></div>
-                    <span>Deployment and production tips</span>
+                    <span>Best practices and workflow optimization</span>
                   </div>
                 </div>
               </div>
               <div>
                 <VideoPlayer
-                  videoId="1bZgauhXlEP2fOnS0VXZewqi71rv1JkN"
-                  title="Complete ChatAndBuild Masterclass"
+                  videoId="1bZgauhXlEP2fOnS0VXZewqi71rv1JkN_"
+                  title="Complete ChatAndBuild Tutorial"
+                  duration="3:23"
+                  difficulty="Beginner"
+                  views="8.5k"
                   className="h-full"
                 />
               </div>
@@ -100,10 +99,11 @@ const Tutorials = () => {
               <TutorialVideoCard
                 icon={<Code className="h-6 w-6" />}
                 title="Getting Started - Sign in"
-                description="Learn the basics by building a simple todo application from scratch."
-                duration="25 min"
+                description="Learn how to sign in to ChatAndBuild and ensure browser compatibility for the best experience."
+                duration="30 sec"
                 difficulty="Beginner"
                 videoId="1I55_FA-7TQmBQhg0a3fQFNlfbeZ2hNid"
+                views="3.1k"
               />
               
               <TutorialVideoCard
@@ -113,6 +113,7 @@ const Tutorials = () => {
                 duration="27 sec"
                 difficulty="Beginner"
                 videoId="1B4VJPf7OvQfM9z2T4UhjDl564Cq1rcld"
+                views="2.8k"
               />
               
               <TutorialVideoCard
@@ -122,6 +123,7 @@ const Tutorials = () => {
                 duration="41 sec"
                 difficulty="Beginner"
                 videoId="1hbPBlq4Tf6LacMZdS2uctTUz4hk2xAYq"
+                views="4.2k"
               />
 
               <TutorialVideoCard
@@ -131,6 +133,7 @@ const Tutorials = () => {
                 duration="40 sec"
                 difficulty="Beginner"
                 videoId="1AtLVc6kb9rC3vkTQZEaCFnF3h8JWbkHn"
+                views="1.9k"
               />
 
               <TutorialVideoCard
@@ -140,6 +143,7 @@ const Tutorials = () => {
                 duration="39 sec"
                 difficulty="Beginner"
                 videoId="14Mu5-exfarp0l4IVwkDFmDmUvMlEqhPQ"
+                views="2.3k"
               />
 
               <TutorialVideoCard
@@ -149,6 +153,7 @@ const Tutorials = () => {
                 duration="31 sec"
                 difficulty="Beginner"
                 videoId="14bBfJChUxv2H2dKJOYdVIIYv7nQLm4b3"
+                views="1.7k"
               />
 
               <TutorialVideoCard
@@ -158,6 +163,7 @@ const Tutorials = () => {
                 duration="39 sec"
                 difficulty="Beginner"
                 videoId="1-tMbQGy1zlsyzxP744nrDIFnCcH8E7bG"
+                views="1.5k"
               />
             </div>
           </div>
@@ -223,9 +229,10 @@ interface TutorialVideoCardProps {
   duration: string;
   difficulty: 'Beginner' | 'Intermediate' | 'Advanced';
   videoId: string;
+  views?: string;
 }
 
-function TutorialVideoCard({ icon, title, description, duration, difficulty, videoId }: TutorialVideoCardProps) {
+function TutorialVideoCard({ icon, title, description, duration, difficulty, videoId, views }: TutorialVideoCardProps) {
   const difficultyColor = {
     'Beginner': 'bg-green-50 text-green-700',
     'Intermediate': 'bg-blue-50 text-blue-700',
@@ -233,11 +240,14 @@ function TutorialVideoCard({ icon, title, description, duration, difficulty, vid
   }[difficulty];
 
   return (
-    <div className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 overflow-hidden group">
-      {/* Video Player */}
+    <div className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 overflow-hidden group">
+      {/* Enhanced Video Player */}
       <VideoPlayer
         videoId={videoId}
         title={title}
+        duration={duration}
+        difficulty={difficulty}
+        views={views}
       />
       
       {/* Content */}

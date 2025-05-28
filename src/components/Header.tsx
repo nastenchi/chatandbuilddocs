@@ -16,10 +16,10 @@ const Header = () => {
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            <a href="#" className="text-secondary-700 hover:text-primary-600 transition-colors duration-200 font-medium">Features</a>
             <a href="#" className="text-secondary-700 hover:text-primary-600 transition-colors duration-200 font-medium">Communities</a>
             <a href="#" className="text-secondary-700 hover:text-primary-600 transition-colors duration-200 font-medium">Documentation</a>
-            <a href="#" className="text-secondary-700 hover:text-primary-600 transition-colors duration-200 font-medium">Tutorials</a>
+            <Link to="/tutorials" className="text-secondary-700 hover:text-primary-600 transition-colors duration-200 font-medium">Tutorials</Link>
+            <Link to="/build-tips" className="text-secondary-700 hover:text-primary-600 transition-colors duration-200 font-medium">Build Tips</Link>
           </nav>
           
           {/* Desktop CTA */}
@@ -49,10 +49,10 @@ const Header = () => {
       {isMenuOpen && (
         <div className="md:hidden bg-white border-t border-gray-100 py-4 px-4 shadow-md animate-fadeIn">
           <nav className="flex flex-col space-y-4">
-            <a href="#" className="text-secondary-700 hover:text-primary-600 transition-colors duration-200 font-medium">Features</a>
             <a href="#" className="text-secondary-700 hover:text-primary-600 transition-colors duration-200 font-medium">Communities</a>
             <a href="#" className="text-secondary-700 hover:text-primary-600 transition-colors duration-200 font-medium">Documentation</a>
-            <a href="#" className="text-secondary-700 hover:text-primary-600 transition-colors duration-200 font-medium">Tutorials</a>
+            <Link to="/tutorials" className="text-secondary-700 hover:text-primary-600 transition-colors duration-200 font-medium">Tutorials</Link>
+            <Link to="/build-tips" className="text-secondary-700 hover:text-primary-600 transition-colors duration-200 font-medium">Build Tips</Link>
             <div className="pt-4 border-t border-gray-100 flex flex-col space-y-4">
               <a href="#" className="text-secondary-700 hover:text-primary-600 transition-colors duration-200 font-medium">Sign In</a>
               <a 

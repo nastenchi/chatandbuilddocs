@@ -6,6 +6,8 @@ import GettingStarted from './pages/GettingStarted.tsx'
 import ApiReference from './pages/ApiReference.tsx'
 import BestPractices from './pages/BestPractices.tsx'
 import Tutorials from './pages/Tutorials.tsx'
+import BuildTips from './pages/BuildTips.tsx'
+import Publish from './pages/Publish.tsx'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -17,6 +19,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path="/api-reference" element={<ApiReference />} />
         <Route path="/best-practices" element={<BestPractices />} />
         <Route path="/tutorials" element={<Tutorials />} />
+        <Route path="/build-tips" element={<BuildTips />} />
+        <Route path="/publish" element={<Publish />} />
       </Routes>
     </Router>
   </React.StrictMode>,

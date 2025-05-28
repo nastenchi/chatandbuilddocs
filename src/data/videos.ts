@@ -18,16 +18,16 @@ export const videoTutorials = [
     title: 'Complete ChatAndBuild Tutorial',
     description: 'Comprehensive guide covering all features and capabilities',
     videoId: VIDEO_IDS.MAIN_VIDEO_ID,
-    duration: '13 min',
+    duration: '3:23',
     level: 'All Levels',
     featured: true
   },
   {
     id: 'getting-started',
     title: 'Getting Started - Sign in',
-    description: 'Your first steps with ChatAndBuild',
+    description: 'Learn how to sign in to ChatAndBuild and ensure browser compatibility for the best experience',
     videoId: VIDEO_IDS.BEGINNER_VIDEO_1_ID,
-    duration: '8 min',
+    duration: '30 sec',
     level: 'Beginner'
   },
   {
