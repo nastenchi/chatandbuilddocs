@@ -1,21 +1,23 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import App from './App.tsx'
-import ApiReference from './pages/ApiReference.tsx'
 import GettingStarted from './pages/GettingStarted.tsx'
-import GitHubIntegration from './pages/GitHubIntegration.tsx'
+import ApiReference from './pages/ApiReference.tsx'
+import BestPractices from './pages/BestPractices.tsx'
+import Tutorials from './pages/Tutorials.tsx'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <Router>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="/api-reference" element={<ApiReference />} />
         <Route path="/getting-started" element={<GettingStarted />} />
-        <Route path="/github-integration" element={<GitHubIntegration />} />
+        <Route path="/api-reference" element={<ApiReference />} />
+        <Route path="/best-practices" element={<BestPractices />} />
+        <Route path="/tutorials" element={<Tutorials />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   </React.StrictMode>,
 )

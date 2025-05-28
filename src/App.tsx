@@ -1,5 +1,5 @@
 import React from 'react'
-import { ChevronRight, Code, Command, Github, Laptop, Lightbulb, Rocket, Terminal, Twitter, Instagram, Linkedin, Youtube, MessageSquare, Zap, Users, Book, FileText, HelpCircle, Bookmark, Settings, Server, ChevronDown, AlertCircle, X, ExternalLink, Clock } from 'lucide-react'
+import { ChevronRight, Code, Command, Github, Laptop, Lightbulb, Rocket, Terminal, Twitter, Instagram, Linkedin, Youtube, MessageSquare, Zap, Users, Book, FileText, HelpCircle, Bookmark, Settings, Server, ChevronDown, AlertCircle, X, ExternalLink, Clock, Upload, GitBranch } from 'lucide-react'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import GuideCard from './components/GuideCard'
@@ -17,7 +17,7 @@ function App() {
 
   const handleGithubClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    navigate('/github-integration');
+    navigate('/best-practices');
   };
 
   const handleGettingStartedClick = (e: React.MouseEvent) => {
@@ -28,6 +28,16 @@ function App() {
   const handleApiReferenceClick = (e: React.MouseEvent) => {
     e.preventDefault();
     navigate('/api-reference');
+  };
+
+  const handleBestPracticesClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    navigate('/best-practices');
+  };
+
+  const handleTutorialsClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    navigate('/tutorials');
   };
 
   return (
@@ -116,15 +126,16 @@ function App() {
             <DocCard 
               icon={<HelpCircle className="h-8 w-8" />}
               title="Tutorials"
-              description="Step-by-step guides for common use cases"
+              description="Step-by-step video guides for common use cases"
               url="#"
+              onClick={handleTutorialsClick}
             />
             <DocCard 
               icon={<Bookmark className="h-8 w-8" />}
               title="Best Practices"
-              description="GitHub integration, optimization tips, and coding standards"
+              description="Development best practices, optimization tips, and coding standards"
               url="#"
-              onClick={handleGithubClick}
+              onClick={handleBestPracticesClick}
             />
             <DocCard 
               icon={<AlertCircle className="h-8 w-8" />}
@@ -152,58 +163,65 @@ function App() {
         </div>
       </section>
       
-      {/* Tutorials Section (Replacing Popular Guides) */}
+      {/* Video Tutorials Section */}
       <section className="py-20 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="section-title">Tutorials</h2>
+            <h2 className="section-title">Video Tutorials</h2>
             <p className="section-description">
-              Learn how to build amazing applications with our step-by-step tutorials.
+              Learn ChatAndBuild through step-by-step video tutorials covering all essential features.
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <TutorialCard 
               icon={<Code className="h-8 w-8" />}
-              title="Building a Todo App"
-              description="Learn how to build a simple todo application with React and ChatAndBuild."
+              title="Getting Started - Sign in"
+              description="Learn the basics and your first steps with ChatAndBuild."
               difficulty="Beginner"
-              duration="30 min"
-            />
-            <TutorialCard 
-              icon={<Laptop className="h-8 w-8" />}
-              title="Creating a Portfolio Website"
-              description="Build a professional portfolio website to showcase your projects and skills."
-              difficulty="Intermediate"
-              duration="45 min"
-            />
-            <TutorialCard 
-              icon={<Rocket className="h-8 w-8" />}
-              title="Developing a Full-Stack App"
-              description="Create a complete application with frontend, backend, and database integration."
-              difficulty="Advanced"
-              duration="90 min"
-            />
-            <TutorialCard 
-              icon={<Terminal className="h-8 w-8" />}
-              title="Command Line Tools"
-              description="Build powerful CLI tools to automate your development workflow."
-              difficulty="Intermediate"
-              duration="60 min"
-            />
-            <TutorialCard 
-              icon={<Lightbulb className="h-8 w-8" />}
-              title="AI-Powered Features"
-              description="Integrate AI capabilities into your applications for smarter user experiences."
-              difficulty="Advanced"
-              duration="75 min"
+              duration="25 min"
             />
             <TutorialCard 
               icon={<Github className="h-8 w-8" />}
-              title="GitHub Integration"
-              description="Learn how to connect your ChatAndBuild projects with GitHub repositories."
+              title="Connect Github account"
+              description="Learn how to connect your GitHub account to ChatAndBuild."
               difficulty="Beginner"
-              duration="20 min"
+              duration="27 sec"
+            />
+            <TutorialCard 
+              icon={<Rocket className="h-8 w-8" />}
+              title="Build your first project"
+              description="Create your first project using ChatAndBuild."
+              difficulty="Beginner"
+              duration="41 sec"
+            />
+            <TutorialCard 
+              icon={<AlertCircle className="h-8 w-8" />}
+              title="Error Handling"
+              description="Learn how to handle and debug errors in ChatAndBuild."
+              difficulty="Beginner"
+              duration="40 sec"
+            />
+            <TutorialCard 
+              icon={<Upload className="h-8 w-8" />}
+              title="Push to Github & Export Chat"
+              description="Learn how to push your projects to GitHub and export chat history."
+              difficulty="Beginner"
+              duration="39 sec"
+            />
+            <TutorialCard 
+              icon={<GitBranch className="h-8 w-8" />}
+              title="Clone Github & Import Chat"
+              description="Learn how to clone GitHub repositories and import chat functions."
+              difficulty="Beginner"
+              duration="31 sec"
+            />
+            <TutorialCard 
+              icon={<HelpCircle className="h-8 w-8" />}
+              title="Support Center"
+              description="Learn how to access and use the support center for help and resources."
+              difficulty="Beginner"
+              duration="39 sec"
             />
           </div>
           
@@ -211,6 +229,7 @@ function App() {
             <a 
               href="#" 
               className="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium"
+              onClick={handleTutorialsClick}
             >
               View all tutorials <ChevronRight className="h-4 w-4 ml-1" />
             </a>
@@ -524,7 +543,7 @@ function DocCard({ icon, title, description, url, onClick }: DocCardProps) {
   )
 }
 
-// New TutorialCard component
+// Updated TutorialCard component to match tutorials page
 interface TutorialCardProps {
   icon: React.ReactNode;
   title: string;
@@ -569,7 +588,7 @@ function TutorialCard({ icon, title, description, difficulty, duration }: Tutori
             href="#" 
             className="inline-flex items-center text-primary-600 hover:text-primary-700 font-medium text-sm transition-all duration-200"
           >
-            Start Tutorial <ChevronRight className="h-4 w-4 ml-1 transition-transform duration-200 group-hover:translate-x-0.5" />
+            Watch Tutorial <ChevronRight className="h-4 w-4 ml-1 transition-transform duration-200 group-hover:translate-x-0.5" />
           </a>
         </div>
       </div>
